@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online tool to upscale and enhance your images without losing quality. Perfect for photographers, designers, and social media users.">
+    <meta name="keywords" content="image upscaler, photo enhancer, image resizer, picture quality improver, free image tool">
+    <meta name="author" content="Image Upscaler Pro">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Free Online Image Upscaler Tool">
+    <meta property="og:description" content="Enhance and upscale your images without quality loss with our free online tool.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.example.com">
+    <meta property="og:image" content="https://www.example.com/preview.jpg">
+    
+    <title>Free Online Image Upscaler Tool | Enhance Photo Quality</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.example.com">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Image Upscaler Tool",
+      "url": "https://www.example.com",
+      "description": "Free online tool to upscale and enhance your images without losing quality.",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Web"
+    }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-color: #f8f9fa;
+            --dark-color: #202124;
+            --gray-color: #5f6368;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            padding: 0;
+            margin: 0;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--gray-color);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--gray-color);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .ad-container {
+            background-color: white;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin: 2rem 0;
+            text-align: center;
+            min-height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .tool-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .upload-area {
+            border: 2px dashed var(--gray-color);
+            border-radius: var(--border-radius);
+            padding: 3rem 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 2rem;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(66, 133, 244, 0.05);
+        }
+        
+        .upload-area i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .upload-area p {
+            color: var(--gray-color);
+        }
+        
+        .upload-area.active {
+            border-color: var(--secondary-color);
+            background-color: rgba(52, 168, 83, 0.05);
+        }
+        
+        #file-input {
+            display: none;
+        }
+        
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .option-group {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .option-group h3 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: var(--dark-color);
+        }
+        
+        select, input[type="range"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            background-color: white;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        select:focus, input[type="range"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .range-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .range-value {
+            min-width: 40px;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: #3367d6;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--gray-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #4d5156;
+        }
+        
+        .btn-disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .btn-disabled:hover {
+            transform: none;
+            background-color: #ccc;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .image-preview {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .image-preview h3 {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .preview-image {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            display: block;
+        }
+        
+        .file-info {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+        }
+        
+        .file-info p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .how-it-works {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .how-it-works h2 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+        }
+        
+        .step i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .step h3 {
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            text-align: left;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 0.75rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .preview-container {
+                flex-direction: column;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+        
+        /* Loading spinner */
+        .spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            margin: 2rem auto;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary-color);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Progress bar */
+        .progress-container {
+            width: 100%;
+            background-color: #f1f1f1;
+            border-radius: var(--border-radius);
+            margin: 1rem 0;
+            display: none;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: var(--secondary-color);
+            border-radius: var(--border-radius);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo">Image Upscaler Pro</a>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">How It Works</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="hero">
+            <h1>Upscale Your Images Without Losing Quality</h1>
+            <p>Enhance and enlarge your photos with our advanced AI-powered image upscaler. Perfect for printing, social media, and professional use.</p>
+        </div>
+        
+        <!-- Ad Container Top -->
+        <div class="ad-container">
+            <!-- Replace with your Google AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"></script>
+            <!-- Image Upscaler Top Ad -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <div class="tool-container">
+            <div class="upload-area" id="upload-area">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <h2>Upload Your Image</h2>
+                <p>Drag & drop your image here or click to browse</p>
+                <input type="file" id="file-input" accept="image/*">
+            </div>
+            
+            <div class="options">
+                <div class="option-group">
+                    <h3>Upscale Factor</h3>
+                    <select id="upscale-factor">
+                        <option value="2">2x</option>
+                        <option value="4" selected>4x</option>
+                        <option value="6">6x</option>
+                        <option value="8">8x</option>
+                    </select>
+                </div>
+                
+                <div class="option-group">
+                    <h3>Compression Level</h3>
+                    <div class="range-container">
+                        <input type="range" id="compression-level" min="0" max="100" value="80">
+                        <span class="range-value" id="compression-value">80%</span>
+                    </div>
+                </div>
+                
+                <div class="option-group">
+                    <h3>Output Format</h3>
+                    <select id="output-format">
+                        <option value="original">Original Format</option>
+                        <option value="jpeg">JPEG</option>
+                        <option value="png">PNG</option>
+                        <option value="webp">WebP</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="progress-container" id="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            
+            <div class="spinner" id="spinner"></div>
+            
+            <div class="action-buttons">
+                <button class="btn btn-disabled" id="upscale-btn" disabled>Upscale Image</button>
+                <button class="btn btn-secondary" id="reset-btn">Reset</button>
+            </div>
+            
+            <div class="preview-container" id="preview-container" style="display: none;">
+                <div class="image-preview">
+                    <h3>Original Image</h3>
+                    <img id="original-image" class="preview-image" src="" alt="Original image">
+                    <div class="file-info" id="original-info"></div>
+                </div>
+                <div class="image-preview">
+                    <h3>Upscaled Image</h3>
+                    <img id="upscaled-image" class="preview-image" src="" alt="Upscaled image">
+                    <div class="file-info" id="upscaled-info"></div>
+                    <button class="btn" id="download-btn" style="margin-top: 1rem;">Download Upscaled Image</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Ad Container Middle -->
+        <div class="ad-container">
+            <!-- Replace with your Google AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"></script>
+            <!-- Image Upscaler Middle Ad -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <div class="how-it-works">
+            <h2>How Our Image Upscaler Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <i class="fas fa-upload"></i>
+                    <h3>Upload Your Image</h3>
+                    <p>Simply drag and drop your image or click to browse files from your device.</p>
+                </div>
+                <div class="step">
+                    <i class="fas fa-sliders-h"></i>
+                    <h3>Adjust Settings</h3>
+                    <p>Choose your desired upscale factor, compression level, and output format.</p>
+                </div>
+                <div class="step">
+                    <i class="fas fa-magic"></i>
+                    <h3>Enhance & Download</h3>
+                    <p>Our AI will upscale your image while preserving quality. Download the result instantly.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Ad Container Bottom -->
+        <div class="ad-container">
+            <!-- Replace with your Google AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"></script>
+            <!-- Image Upscaler Bottom Ad -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Image Upscaler Pro</h3>
+                <p>The best free online tool to enhance and upscale your images without losing quality.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-pinterest"></i> Pinterest</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Image Upscaler Pro. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // DOM Elements
+        const uploadArea = document.getElementById('upload-area');
+        const fileInput = document.getElementById('file-input');
+        const upscaleBtn = document.getElementById('upscale-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const downloadBtn = document.getElementById('download-btn');
+        const previewContainer = document.getElementById('preview-container');
+        const originalImage = document.getElementById('original-image');
+        const upscaledImage = document.getElementById('upscaled-image');
+        const originalInfo = document.getElementById('original-info');
+        const upscaledInfo = document.getElementById('upscaled-info');
+        const compressionLevel = document.getElementById('compression-level');
+        const compressionValue = document.getElementById('compression-value');
+        const spinner = document.getElementById('spinner');
+        const progressContainer = document.getElementById('progress-container');
+        const progressBar = document.getElementById('progress-bar');
+        
+        // Event Listeners
+        uploadArea.addEventListener('click', () => fileInput.click());
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('active');
+        });
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('active');
+        });
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('active');
+            if (e.dataTransfer.files.length) {
+                fileInput.files = e.dataTransfer.files;
+                handleFileSelect();
+            }
+        });
+        
+        fileInput.addEventListener('change', handleFileSelect);
+        compressionLevel.addEventListener('input', updateCompressionValue);
+        upscaleBtn.addEventListener('click', upscaleImage);
+        resetBtn.addEventListener('click', resetTool);
+        downloadBtn.addEventListener('click', downloadImage);
+        
+        // Variables
+        let selectedFile = null;
+        let upscaledFile = null;
+        
+        // Functions
+        function handleFileSelect() {
+            if (fileInput.files && fileInput.files[0]) {
+                selectedFile = fileInput.files[0];
+                
+                // Validate file type
+                if (!selectedFile.type.match('image.*')) {
+                    alert('Please select an image file (JPEG, PNG, etc.)');
+                    return;
+                }
+                
+                // Validate file size (max 10MB)
+                if (selectedFile.size > 10 * 1024 * 1024) {
+                    alert('File size should be less than 10MB');
+                    return;
+                }
+                
+                // Display original image
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    originalImage.src = e.target.result;
+                    
+                    // Display file info
+                    originalInfo.innerHTML = `
+                        <p><strong>Name:</strong> ${selectedFile.name}</p>
+                        <p><strong>Type:</strong> ${selectedFile.type}</p>
+                        <p><strong>Size:</strong> ${formatFileSize(selectedFile.size)}</p>
+                        <p><strong>Dimensions:</strong> Loading...</p>
+                    `;
+                    
+                    // Get image dimensions
+                    const img = new Image();
+                    img.onload = function() {
+                        originalInfo.innerHTML = `
+                            <p><strong>Name:</strong> ${selectedFile.name}</p>
+                            <p><strong>Type:</strong> ${selectedFile.type}</p>
+                            <p><strong>Size:</strong> ${formatFileSize(selectedFile.size)}</p>
+                            <p><strong>Dimensions:</strong> ${img.width} × ${img.height} px</p>
+                        `;
+                    };
+                    img.src = e.target.result;
+                    
+                    // Enable upscale button
+                    upscaleBtn.classList.remove('btn-disabled');
+                    upscaleBtn.disabled = false;
+                    
+                    // Show preview container
+                    previewContainer.style.display = 'flex';
+                };
+                reader.readAsDataURL(selectedFile);
+            }
+        }
+        
+        function updateCompressionValue() {
+            compressionValue.textContent = `${compressionLevel.value}%`;
+        }
+        
+        function upscaleImage() {
+            if (!selectedFile) return;
+            
+            // Show loading state
+            upscaleBtn.disabled = true;
+            spinner.style.display = 'block';
+            progressContainer.style.display = 'block';
+            
+            // Simulate processing with progress updates
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 5;
+                progressBar.style.width = `${progress}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        // Hide spinner and progress bar
+                        spinner.style.display = 'none';
+                        progressContainer.style.display = 'none';
+                        
+                        // Simulate upscaled result (in a real app, this would be from your API)
+                        simulateUpscaledResult();
+                    }, 500);
+                }
+            }, 200);
+        }
+        
+        function simulateUpscaledResult() {
+            // In a real implementation, you would send the image to your backend API
+            // and receive the upscaled version. Here we're just simulating it.
+            
+            const upscaleFactor = parseInt(document.getElementById('upscale-factor').value);
+            const img = new Image();
+            img.onload = function() {
+                // Create a canvas to simulate upscaling
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width * upscaleFactor;
+                canvas.height = img.height * upscaleFactor;
+                const ctx = canvas.getContext('2d');
+                ctx.imageSmoothingEnabled = true;
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                
+                // Get the upscaled image as data URL
+                let mimeType = 'image/jpeg';
+                const outputFormat = document.getElementById('output-format').value;
+                
+                if (outputFormat === 'png') mimeType = 'image/png';
+                else if (outputFormat === 'webp') mimeType = 'image/webp';
+                else if (selectedFile.type === 'image/png') mimeType = 'image/png';
+                
+                // Simulate quality reduction based on compression level
+                const quality = parseInt(compressionLevel.value) / 100;
+                const upscaledDataURL = canvas.toDataURL(mimeType, quality);
+                
+                // Display upscaled image
+                upscaledImage.src = upscaledDataURL;
+                
+                // Create a blob for download
+                dataURLToBlob(upscaledDataURL, function(blob) {
+                    upscaledFile = blob;
+                    
+                    // Display upscaled file info
+                    upscaledInfo.innerHTML = `
+                        <p><strong>Type:</strong> ${mimeType}</p>
+                        <p><strong>Size:</strong> ${formatFileSize(blob.size)}</p>
+                        <p><strong>Dimensions:</strong> ${canvas.width} × ${canvas.height} px</p>
+                        <p><strong>Upscale Factor:</strong> ${upscaleFactor}x</p>
+                    `;
+                    
+                    // Enable download button
+                    downloadBtn.disabled = false;
+                });
+            };
+            img.src = originalImage.src;
+        }
+        
+        function dataURLToBlob(dataURL, callback) {
+            const binaryString = atob(dataURL.split(',')[1]);
+            const arrayBuffer = new ArrayBuffer(binaryString.length);
+            const uint8Array = new Uint8Array(arrayBuffer);
+            
+            for (let i = 0; i < binaryString.length; i++) {
+                uint8Array[i] = binaryString.charCodeAt(i);
+            }
+            
+            const mimeString = dataURL.split(',')[0].split(':')[1].split(';')[0];
+            callback(new Blob([uint8Array], { type: mimeString }));
+        }
+        
+        function downloadImage() {
+            if (!upscaledFile) return;
+            
+            const a = document.createElement('a');
+            const url = URL.createObjectURL(upscaledFile);
+            
+            // Generate filename
+            const originalName = selectedFile.name.split('.')[0];
+            const extension = document.getElementById('output-format').value;
+            const upscaleFactor = document.getElementById('upscale-factor').value;
+            
+            a.href = url;
+            a.download = `${originalName}_upscaled_${upscaleFactor}x.${extension === 'original' ? selectedFile.name.split('.').pop() : extension}`;
+            document.body.appendChild(a);
+            a.click();
+            
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 100);
+        }
+        
+        function resetTool() {
+            // Reset file input
+            fileInput.value = '';
+            selectedFile = null;
+            upscaledFile = null;
+            
+            // Reset UI
+            originalImage.src = '';
+            upscaledImage.src = '';
+            originalInfo.innerHTML = '';
+            upscaledInfo.innerHTML = '';
+            previewContainer.style.display = 'none';
+            
+            // Reset buttons
+            upscaleBtn.classList.add('btn-disabled');
+            upscaleBtn.disabled = true;
+            downloadBtn.disabled = true;
+            
+            // Reset compression display
+            compressionLevel.value = 80;
+            compressionValue.textContent = '80%';
+            
+            // Hide loading elements
+            spinner.style.display = 'none';
+            progressContainer.style.display = 'none';
+            progressBar.style.width = '0%';
+        }
+        
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+    </script>
+</body>
+</html>
